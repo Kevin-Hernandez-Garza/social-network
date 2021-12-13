@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/Kevin-Hernandez-Garza/social-network/issues"
   },
-  "homepage": "https://github.com/Kevin-Hernandez-Garza/social-network#readme"
+  "homepage": "https://github.com/Kevin-Hernandez-Garza/social-network#readme",
+  "dependencies": {
+    "mongoose": "^6.1.1"
+  }
 }
