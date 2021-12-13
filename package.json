@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Kevin-Hernandez-Garza/social-network#readme",
   "dependencies": {
+    "express": "^4.17.1",
     "mongoose": "^6.1.1"
   }
 }
