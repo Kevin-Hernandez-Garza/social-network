@@ -12,8 +12,6 @@ const ThoughtSchema = new Schema ({
     },
     createdAt: {
         type: Date, 
-        required: true, 
-        trim: true, 
         default: Date.now,
         get: (createdAtVal) => dateFormat(createdAtVal)
     },
@@ -21,6 +19,7 @@ const ThoughtSchema = new Schema ({
         type: String, 
         required: true
     },
+    // array of nested docs
     reactions: [ReactionSchema]
 },
 {

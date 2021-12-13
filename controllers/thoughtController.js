@@ -12,8 +12,13 @@ const ThoughtController = {
     },
 
     // get one by id 
-    getOneThoughtById({ params }, res) {
+    getThoughtById({ params }, res) {
         Thought.findOne({ _id: params.id })
+            .populate({
+                path: 'reactions',
+                select: '-__v'
+            })
+            .select('-__v')
             .then(dbThought => {
                 if(!dbThought) {
                     res.status(404).json({ message: 'There is not a thought by that id!' });
@@ -65,16 +70,16 @@ const ThoughtController = {
             .catch(err => res.status(400).json(err));
     },
 
-    // delete 
+    // delete a thought by id
     deleteThoughtById({ params }, res) {
-        Thought.findByIdAndDelete({ _id: params.id })
+        Thought.findOneAndDelete({ _id: params.id })
         .then(dbThought => {
             if(!dbThought) {
                 res.status(404).json({ message: 'There is no thought with that id!' });
                 return;
             }
 
-            res.json();
+            res.json(dbThought);
         }) 
         .catch(err => res.status(400).json(err));
     },

@@ -21,6 +21,13 @@ const ReactionSchema = new Schema({
         default: Date.now, 
         get:(CreatedAtVal) => dateFormat(CreatedAtVal)
     }
-})
+}, 
+{
+    toJSON: {
+        getters: true
+    },
+    id: false
+}
+)
 
 module.exports = ReactionSchema;
