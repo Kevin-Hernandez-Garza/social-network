@@ -54,7 +54,7 @@ const UserController = {
     },
 
     // update user
-    updateUser({ body}, res) {
+    updateUser({ params, body}, res) {
         User.findOneAndUpdate(
             { _id: params.id},
             body, 
@@ -106,7 +106,7 @@ const UserController = {
     deleteFriend({ params }, res) {
         User.findByIdAndUpdate(
             { _id: params.userId},
-            { $push: { friends: params.friendId }},
+            { $pull: { friends: params.friendId }},
             { new: true }
         )
             .then(dbUser => {
